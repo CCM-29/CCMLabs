@@ -1,0 +1,42 @@
+# Web
+
+PORT=3000
+NODE_ENV=development
+
+# JWT
+
+JWT_TOKEN_SECRET=7e84c7363ade4296b6838f3a90ae16a2
+
+# Data Base
+
+REDIS_URI=redis://localhost:6379
+
+# Admin Micro Service
+
+ADMIN_APIKEY=45468065-fcef-442b-a87c-51fc721afda7
+ADMIN_SERVICE_URL=http://localhost:3001
+
+# User Micro Service
+
+USER_SERVICE_API_KEY=97ca412d-aeff-4c33-b7cf-30f98840f26e
+USER_SERVICE_URL=http://localhost:3002
+
+# Object Micro Service
+
+OBJECT_APIKEY=bf57fc04-3050-41b8-bb83-109d1dea3aa7
+OBJECT_SERVICE_URL=http://localhost:3003
+
+# Cms Micro Service
+
+CMS_APIKEY=7b28e406-edbf-4087-a1cc-3ca787aee22c
+CMS_SERVICE_URL=http://localhost:3004
+
+# Log Micro Service
+
+LOG_APIKEY=71d8bcf7-55da-419e-9e26-07bc6e83be83
+LOG_SERVICE_URL=http://localhost:3005
+
+# Security Micro Service
+
+SECURITY_APIKEY=4335322d-53f9-4d20-b3a7-2b6f4463062c
+SECURITY_SERVICE_URL=http://localhost:3006

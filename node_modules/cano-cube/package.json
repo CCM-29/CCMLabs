@@ -1,0 +1,8 @@
+{
+  "name": "cano-cube",
+  "version": "1.0.0",
+  "description": "Cube is an abstract class for adding any extra functionality to Cano microframework",
+  "main": "index.js",
+  "author": "Antonio Mejias",
+  "license": "MIT"
+}

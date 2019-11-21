@@ -1,0 +1,430 @@
+FORMAT: 1A
+
+# Bunkey API Gateway
+
+This is the API Gateway of Bunkey backend application. Written in Node JS based on microservices architecture.
+
+# Group Authetication
+
+## Sign In [/v1/auth/sign-in]
+
+### Authentication on system [POST]
+
++ Request (application/json)
+
+    + Attributes (Credentials)
+
++ Response 200 (application/json)
+
+    + Attributes (Token Access)
+
+## Sign Out [/v1/auth/sign-out]
+
+### Finish authorization on system [POST]
+
++ Request
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 200
+
+## Refresh Access Token [/v1/auth/refresh-token]
+
+When the access token expired you should use this services to renovate it.
+
+### Refresh Access Token [POST]
+
++ Request (application/json)
+
+    + Attributes (Refresh Token)
+
++ Response 200 (application/json)
+
+    + Attributes (Token)
+
+
+## Recovery Password [/v1/recovery-password]
+
+When the user forget his password, he can use this services to 
+
+### Recovery Password [POST]
+
+This is the first step for the recovery password process, the user will send his email address to receive a mail with a link for update his password.
++ Request (application/json)
+
+    + Attributes (object)
+        + email: `jhon.snow@winteriscomming.com` (string, required) - The user's email.
+
++ Response 204
+
+### Update Password [PUT]
+
+This is the two step for the recovery password process, you have to send the new password with the recovery password token. 
++ Request (application/json)
+    
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
+    + Attributes (object)
+        + password: `The new King in the Nort <3` (string, required) - The new user's password.
+
++ Response 204
+
+# Group User Bunkey Master
+
+## Users [/v1/admin/users]
+
+### Create user [POST]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
+    + Attributes (User)
+
++ Response 201 (application/json)
+
+    + Attributes (User with id)
+
+### Get users [GET]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 201 (application/json)
+    
+    + Headers
+        
+            X-Pagination-Total-Count: 1
+            X-Pagination-Limit: 10
+
+    + Attributes (array[User with id])
+
+## User by ID [/v1/admin/users/{id}]
+
++ Parameters
+
+    + id: `5afb512ff5200b346bc7a63c` (string) - The user's id.
+
+### Get user by ID [GET]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 200 (application/json)
+
+    + Attributes (User with id)
+
+### Update user by ID [PUT]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+    
+    + Attributes (User)
+
++ Response 204 (application/json)
+
+
+### Delete user by id [DELETE]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 204 (application/json)
+
+## Clients [/v1/admin/clients]
+
+### Create client [POST]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
+    + Attributes (Client)
+
++ Response 201 (application/json)
+
+    + Attributes (Client with id)
+
+### Get clients [GET]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 201 (application/json)
+    
+    + Headers
+        
+            X-Pagination-Total-Count: 1
+            X-Pagination-Limit: 10
+
+    + Attributes (array[Client with id])
+
+## Client by ID [/v1/admin/clients/{id}]
+
++ Parameters
+
+    + id: `5afb512ff5200b346bc7a63c` (string) - The user's id.
+
+### Get client by ID [GET]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 200 (application/json)
+
+    + Attributes (Client with id)
+
+### Update client by ID [PUT]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+    
+    + Attributes (Client)
+
++ Response 204 (application/json)
+
+
+### Delete client by ID [DELETE]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 204 (application/json)
+
+## Contracts [/v1/admin/contracts]
+
+### Create contract [POST]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
+    + Attributes (Contract)
+
++ Response 201 (application/json)
+
+    + Attributes (Contract with id)
+
+### Get contracts [GET]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 201 (application/json)
+    
+    + Headers
+        
+            X-Pagination-Total-Count: 1
+            X-Pagination-Limit: 10
+
+    + Attributes (array[Contract with id])
+
+## Contract by ID [/v1/admin/contracts/{id}]
+
++ Parameters
+
+    + id: `5afb512ff5200b346bc7a63c` (string) - The contract's id.
+
+### Get contract by ID [GET]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 200 (application/json)
+
+    + Attributes (Contract with id)
+
+### Update contract by ID [PUT]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+    
+    + Attributes (Contract)
+
++ Response 204 (application/json)
+
+
+### Delete contract by ID [DELETE]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 204 (application/json)
+
+## Payments [/v1/admin/payments]
+
+### Get payments [GET]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 201 (application/json)
+    
+    + Headers
+        
+            X-Pagination-Total-Count: 1
+            X-Pagination-Limit: 10
+
+    + Attributes (array[Payment])
+
+## Payment by ID [/v1/admin/payments/{id}]
+
++ Parameters
+
+    + id: `5afb512ff5200b346bc7a63c` (string) - The payment's id.
+
+### Get payment by ID [GET]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+
++ Response 200 (application/json)
+
+    + Attributes (Payment)
+
+### Update payment by ID [PUT]
+
++ Request (application/json)
+
+    + Headers
+        
+            Authorization: Bearer apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+    
+    + Attributes (Payment)
+
++ Response 204 (application/json)
+
+
+# Data Structures
+
+## Credentials (object)
+
++ email: `admin@bunkeyapp.tv` (string, required) - The user's email.
++ password: `bunkey666` (string, required) - The user's password.
+
+## Token (object)
+
++ token: `apJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9` (string, required) - The JWT token format for access to the system.
+
+## Refresh Token (object)
+
++ refreshToken: `WAEz2s8kelPgywfo9m58UmXJf82PQLxuUZ0` (string, required) - The refresh token to renovate the access token.
+
+## Token Access (object)
++ Include (Token)
++ Include (Refresh Token)
+
+## User (object)
++ Include (Credentials)
++ name: `Jhon Snow` (string, required) - The user's name. 
++ role: `admin` (enum[string]) - The user's rol in the system.
+    + Members
+        + `admin` - The Bunkey Master role.
+        + `editor` - The Bunkey Editor role.
+        + `client` - The Cunkey Client Admin role.
+        + `operator` - Tthe Bunkey Client User role.
++ clientsAssignEditor: [] (array[string], optional, default) - Array with clients id assigned to a bunkey editor. This field is required when the user's rol is editor.
++ favorites: [] (array[string], optional, default) - Array with client's objects id selected like favorites.
++ workspace: `5erfefa-c427-4894-832c-ee1e8c714b81` (string, optional) - The user's workspace id.
++ clietntOwner: `5erfefa-c427-4894-832c-ee1e8c714b82` (string, optional) - The client's id which an user belong to. This field is required when the user's rol is operator.
++ status: true (boolean, optional, default) - The user's status.
+
+## User with id (object)
++ Include (User)
++ _id: `5afb512ff5200b346bc7a63c` (string, required) - The user's id.
+
+## Acount Setting (object)
++ logo: `https://vignette.wikia.nocookie.net/gameofthrones/images/e/ed/Night%27s-Watch-Main-Shield.PNG` (string, optional) - The client's account logo URL.
++ background: `https://vignette.wikia.nocookie.net/gameofthrones/images/7/7b/Castle_Black.jpg` (string, optional) - The client's account background URL.
++ language: `es` (string, optional) - The client's account language.
+
+## Client (object)
++ dni: `20343646-7` (string, required) - The client's DNI.
++ name: `Banco Chile` (string, required) - The client's name.
++ agent: `Andronico Luksic` (string, required) - The agent's name.
++ email: `andronico.luksic@bancochile.cl` (string, required) - The agent's email.
++ phone: `+7 1515151515` (string, required) - The agent's phone agent.
++ status: true (boolean, optional, default) - The client's status.
++ users: [] (array[string], optional, default) - The client's users operators.
++ *acountSetting* (object, optional) - The client's account setting.
+    + Include (Acount Setting) 
+
+## Client with id (object)
++ Include (Client)
++ _id: `5afb512ff5200b346bc7a63c` (string, required) - The client's id.
+
+## Plan (object)
++ sizeTotal: `500 GB` (string, required) - Size total plan.
++ sizeVideoRow: `200 GB` (string, required) - Size video row plan.
++ sizeVideoFinal: `300 GB` (string, required) - Size video final plan.
+
+## Payment (object)
++ _id: `5afb512ff5200b346bc7a63c` (string, required) - The payment's id.
++ createdAt: `2017-12-31T06:58:48.092Z` (string, required) - The payment's date.
++ month: `may` (string, required) - The payment's month.
++ observation: `Jhon and Daenerys <3 se aman` (string, required) - The payment's observation.
+
+## Contract (object)
++ client: `5afb512ff5200b346bc7a63c` (string, required) - The contract's id client.
++ *plan* (object, required) - The contract's id plan.
+    + Include (Plan) 
++ monthlyPaymentDay: 5 (number, required) - Monthly payment day
++ startDate: `2017-12-31T06:58:48.092Z` (string, required) - The contract's start date.
++ endDate: `2017-12-31T06:58:48.092Z` (string, required) - The contract's end date.
+
+## Contract with id (object)
++ Include (Contract)
+- *payments* (array[Payment]) - The contract's payments.
++ _id: `5afb512ff5200b346bc7a63c` (string, required) - The contract's id.
